@@ -1,57 +1,34 @@
-<title>ABC</title>
-<p style="font-size:50px; 
-position:absolute;
-left:43%;
-margin:-0px -0px;
-color:black
-">ABC</p>
-<style>
-    .gb:hover
-    {
-        
-        background-color: black;
-        color: white;
-        border: 3px solid grey;
-        transition-duration: 0.5s;
-        
-
-    }
-
-  body {
-    background: #A9a9a9
-  }
-
-</style>
-
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-
-  <head>
-  </head>
-  <button onclick="openGame()" style="height:150px;
-width:300px;background-color:grey;
-font-size:20px;
-font-family:cubic;
-color:black;
-position:fixed;
-margin:-40px -60px;
-top:25%;
-left:45%;
-cursor: pointer
-">Open ABC</button>
-
+</head>
 <body>
-  <script>
-    function openGame() {
-      var win = window.open()
-      var url = String(document.getElementById("https://nano-working.vercel.app").value) //<------ this is where you put the link -reminder for r480
-      var iframe = win.document.createElement('iframe')
-      iframe.style.width = "110%";
-      iframe.style.height = "110%"
-      iframe.style.border = "none";
-      iframe.src = url
-      win.close
-      win.document.body.appendChild(iframe)
-    }
-
-  </script>
+    <button>embed about:blank</button>
+    <script type="text/javascript">
+        var urlobj = new window.URL(window.location.href);
+        let url = prompt("url?")
+        if (url) {
+            var win;
+            document.querySelector('button'). onclick = function() {
+            if (win) {
+            win.focus();
+        }
+        else {
+            win = window.open();
+            win.document.body.style.margin = '0';
+            win. document.body.style.height = '100%';
+            var iframe = win.document.createElement('iframe');
+            iframe.style.border='none';
+            iframe.style.width = '100%' ;
+            iframe.style.height = '100%' ;
+            iframe.style.margin = '0';
+            iframe.src = url;
+            win.document.body.appendChild(iframe);
+            }
+            location.reload();
+            }
+        }
+    </script>
 </body>
+</html>
