@@ -6,18 +6,29 @@
 <body>
     <script type="text/javascript">
         var urlobj = new window.URL(window.location.href);
-        {
+
+        // Check if the page has already been reloaded
+        if (!localStorage.getItem('hasReloaded')) {
+            localStorage.setItem('hasReloaded', 'true'); // Mark as reloaded
+
             win = window.open();
-            win.document.body.style.margin = '0';
-            win. document.body.style.height = '100%';
-            var iframe = win.document.createElement('iframe');
-            iframe.style.border='none';
-            iframe.style.width = '100%' ;
-            iframe.style.height = '100%' ;
-            iframe.style.margin = '0';
-            iframe.src = 'https://nano-working.vercel.app';
-            win.document.body.appendChild(iframe);
+            if (win) {
+                win.document.body.style.margin = '0';
+                win.document.body.style.height = '100%';
+                var iframe = win.document.createElement('iframe');
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.margin = '0';
+                iframe.src = 'https://nano-working.vercel.app';
+                win.document.body.appendChild(iframe);
+            } else {
+                alert('Pop-up blocked! Please allow pop-ups for this site.');
+            }
+
             location.reload();
+        } else {
+            localStorage.removeItem('hasReloaded'); // Clear flag for future visits
         }
     </script>
 </body>
