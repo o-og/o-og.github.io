@@ -30,9 +30,11 @@
 
                 win.document.body.appendChild(iframe);
 
-                // Redirect the current tab to the desired location (or close it)
-                window.location.replace('https://nano-working.vercel.app'); // The current tab will now load the final content
-                // Alternatively, you could use window.close(); if closing the tab is an option and allowed by the browser.
+                // Now close the original tab (if allowed) or redirect it
+                window.close(); // Try to close the original tab
+
+                // If closing doesn't work, navigate to nano-working.vercel.app
+                //window.location.replace('https://nano-working.vercel.app'); // Alternative
 
             } else {
                 alert('Pop-up blocked! Please allow pop-ups for this site.');
