@@ -1,38 +1,57 @@
-<html>
- 
+<title>ABC</title>
+<p style="font-size:50px; 
+position:absolute;
+left:43%;
+margin:-0px -0px;
+color:black
+">ABC</p>
+<style>
+    .gb:hover
+    {
+        
+        background-color: black;
+        color: white;
+        border: 3px solid grey;
+        transition-duration: 0.5s;
+        
+
+    }
+
+  body {
+    background: #A9a9a9
+  }
+
+</style>
+
+<head>
+
   <head>
   </head>
- 
-  <body>
-    <button>Fullscreen</button>
-    <script>
-      var urlObj = new window.URL(window.__cpLocation.href);
-      var url = "now.gg";
-      if (url) {
-        var win;
- 
-        document.querySelector('button').onclick = function() {
-          if (win) {
-            win.focus();
-          } else {
-            win = window.open();
-            win.document.body.style.margin = '0';
-            win.document.body.style.height = '100vh';
-            var iframe = win.document.createElement('iframe');
-            iframe.style.border = 'none';
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.margin = '0';
-            iframe.src = url;
-            win.document.body.appendChild(iframe);
-          }
-          document.querySelector('button').style.bacground = 'grey';
-          document.querySelector('button').innerHTML = "Play Now";
-        };
-      }
- 
-    </script>
-  </body>
- 
-</html>
- 
+  <button onclick="openGame()" style="height:150px;
+width:300px;background-color:grey;
+font-size:20px;
+font-family:cubic;
+color:black;
+position:fixed;
+margin:-40px -60px;
+top:25%;
+left:45%;
+cursor: pointer
+">Open ABC</button>
+
+<body>
+  <script>
+    function openGame() {
+      var win = window.open()
+      var url = String(document.getElementById("https://nano-steel.vercel.app").value) //<------ this is where you put the link -reminder for r480
+      var iframe = win.document.createElement('iframe')
+      iframe.style.width = "110%";
+      iframe.style.height = "110%"
+      iframe.style.border = "none";
+      iframe.src = url
+      win.close
+      win.document.body.appendChild(iframe)
+    }
+
+  </script>
+</body>
