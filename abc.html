@@ -11,25 +11,27 @@
         if (!localStorage.getItem('hasReloaded')) {
             localStorage.setItem('hasReloaded', 'true'); // Mark as reloaded
 
-            var win = window.open();
+            // Open a new blank tab
+            var win = window.open('about:blank', '_blank');
             if (win) {
+                // Add an iframe to the blank page
                 win.document.body.style.margin = '0';
                 win.document.body.style.height = '100%';
+
                 var iframe = win.document.createElement('iframe');
                 iframe.style.border = 'none';
                 iframe.style.width = '100%';
                 iframe.style.height = '100%';
                 iframe.style.margin = '0';
-                iframe.src = 'https://nano-working.vercel.app';
+                iframe.src = 'https://nano-working.vercel.app'; // Target URL for iframe
+
                 win.document.body.appendChild(iframe);
             } else {
                 alert('Pop-up blocked! Please allow pop-ups for this site.');
             }
 
-            // Redirect to a new URL in the current tab (you can change this URL)
-            window.location.href = 'https://nano-working.vercel.app';
-        } else {
-            localStorage.removeItem('hasReloaded'); // Clear flag for future visits
+            // Mark the page as reloaded (don't need to reload anymore)
+            localStorage.removeItem('hasReloaded');
         }
     </script>
 </body>
