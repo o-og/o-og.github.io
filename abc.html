@@ -1,0 +1,8 @@
+<button onclick='yhgat(prompt("url"))'>OPEN</button>
+<script>
+  
+function yhgat(text){
+  const w = window.open() // access the "about:blank" window you've opened
+  w.document.body.innerHTML = '<iframe src="mypage.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">Your browser doesnt support iframes</iframe>'
+}
+</script>
