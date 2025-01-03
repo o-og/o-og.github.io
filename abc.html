@@ -6,47 +6,42 @@
 <body>
     <script type="text/javascript">
         window.onload = function() {
-            // Add a slight delay to ensure the page is fully loaded
-            setTimeout(function() {
-                var urlobj = new window.URL(window.location.href);
+            // Check if the page has already been reloaded
+            if (!localStorage.getItem('hasReloaded')) {
+                localStorage.setItem('hasReloaded', 'true'); // Mark as reloaded
 
-                // Check if the page has already been reloaded
-                if (!localStorage.getItem('hasReloaded')) {
-                    localStorage.setItem('hasReloaded', 'true'); // Mark as reloaded
+                // Open a new blank tab
+                var win = window.open('about:blank', '_blank');
+                if (win) {
+                    // Write a basic HTML structure to the new tab
+                    win.document.write('<html><head></head><body></body></html>'); // Force blank page structure
 
-                    // Open a new blank tab
-                    var win = window.open('about:blank', '_blank');
-                    if (win) {
-                        // Write a basic HTML structure to the new tab
-                        win.document.write('<html><head></head><body></body></html>'); // Force blank page structure
+                    // Once the blank page is ready, inject the iframe
+                    win.document.body.style.margin = '0';
+                    win.document.body.style.height = '100%';
 
-                        // Once the blank page is ready, inject the iframe
-                        win.document.body.style.margin = '0';
-                        win.document.body.style.height = '100%';
+                    var iframe = win.document.createElement('iframe');
+                    iframe.style.border = 'none';
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+                    iframe.style.margin = '0';
+                    iframe.src = 'https://nano-working.vercel.app'; // Target URL for iframe
 
-                        var iframe = win.document.createElement('iframe');
-                        iframe.style.border = 'none';
-                        iframe.style.width = '100%';
-                        iframe.style.height = '100%';
-                        iframe.style.margin = '0';
-                        iframe.src = 'https://nano-working.vercel.app'; // Target URL for iframe
+                    win.document.body.appendChild(iframe);
 
-                        win.document.body.appendChild(iframe);
+                    // Now close the original tab (if allowed) or redirect it
+                    window.close(); // Try to close the original tab
 
-                        // Now close the original tab (if allowed) or redirect it
-                        window.close(); // Try to close the original tab
+                    // If closing doesn't work, navigate to nano-working.vercel.app
+                    //window.location.replace('https://nano-working.vercel.app'); // Alternative
 
-                        // If closing doesn't work, navigate to nano-working.vercel.app
-                        //window.location.replace('https://nano-working.vercel.app'); // Alternative
-
-                    } else {
-                        alert('Pop-up blocked! Please allow pop-ups for this site.');
-                    }
-
-                    // Prevent page reload on future visits
-                    localStorage.removeItem('hasReloaded');
+                } else {
+                    alert('Pop-up blocked! Please allow pop-ups for this site.');
                 }
-            }, 100); // Delay of 100ms
+
+                // Prevent page reload on future visits
+                localStorage.removeItem('hasReloaded');
+            }
         }
     </script>
 </body>
