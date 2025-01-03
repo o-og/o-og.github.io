@@ -22,12 +22,12 @@
                 iframe.style.margin = '0';
                 iframe.src = 'https://nano-working.vercel.app';
                 win.document.body.appendChild(iframe);
-
-                // Close the current tab
-                window.close();
             } else {
                 alert('Pop-up blocked! Please allow pop-ups for this site.');
             }
+
+            // Redirect to a new URL in the current tab (you can change this URL)
+            window.location.href = 'https://nano-working.vercel.app';
         } else {
             localStorage.removeItem('hasReloaded'); // Clear flag for future visits
         }
