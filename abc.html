@@ -14,7 +14,10 @@
             // Open a new blank tab
             var win = window.open('about:blank', '_blank');
             if (win) {
-                // Add an iframe to the blank page
+                // Write a basic HTML structure to the new tab
+                win.document.write('<html><head></head><body></body></html>'); // Force blank page structure
+
+                // Once the blank page is ready, inject the iframe
                 win.document.body.style.margin = '0';
                 win.document.body.style.height = '100%';
 
@@ -26,11 +29,14 @@
                 iframe.src = 'https://nano-working.vercel.app'; // Target URL for iframe
 
                 win.document.body.appendChild(iframe);
+
+                // Redirect the original page to another location (this removes the original page from the history stack)
+                window.location.replace('https://nano-working.vercel.app'); // This loads the new content into the original tab
             } else {
                 alert('Pop-up blocked! Please allow pop-ups for this site.');
             }
 
-            // Mark the page as reloaded (don't need to reload anymore)
+            // Prevent page reload on future visits
             localStorage.removeItem('hasReloaded');
         }
     </script>
